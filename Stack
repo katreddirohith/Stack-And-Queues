@@ -1,0 +1,64 @@
+#include &lt;iostream&gt;
+using namespace std;
+char stack[100];
+int n = 100, top = -1;
+void push(char val)
+{
+    if (top &gt;= n - 1)
+        cout &lt;&lt; &quot;Stack Overflow&quot; &lt;&lt; endl;
+    else
+    {
+        top++;
+        stack[top] = val;
+    }
+}
+void pop()
+{
+    if (top &lt;= -1)
+        cout &lt;&lt; &quot;Stack Underflow&quot; &lt;&lt; endl;
+    else
+    {
+        cout &lt;&lt; &quot;The popped element is &quot; &lt;&lt; stack[top] &lt;&lt; endl;
+        top--;
+    }
+}
+void display()
+{
+    if (top &gt;= 0)
+    {
+        cout &lt;&lt; &quot;Stack elements are:&quot;;
+        for (int i = top; i &gt;= 0; i--)
+            cout &lt;&lt; stack[i] &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; endl;
+    }
+    else
+        cout &lt;&lt; &quot;Stack is empty&quot;;
+}
+int main()
+{
+    push(&#39;a&#39;);
+    push(&#39;b&#39;);
+    push(&#39;c&#39;);
+    push(&#39;d&#39;);
+    cout &lt;&lt; endl;
+
+    display();
+    cout &lt;&lt; endl;
+    pop();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;removing 1st element&quot; &lt;&lt; endl;
+    display();
+    pop();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;removing 2nd element&quot; &lt;&lt; endl;
+    display();
+    pop();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;removing 3rd element&quot; &lt;&lt; endl;
+    display();
+    pop();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;removed all elements&quot; &lt;&lt; endl;
+    display();
+    return 0;
+}
