@@ -1,0 +1,110 @@
+#include &lt;iostream&gt;
+#define SIZE 4
+using namespace std;
+
+class Queue
+{
+private:
+    char items[SIZE];
+    int front, rear;
+public:
+    Queue()
+    {
+        front = -1;
+        rear = -1;
+    }
+    bool isFull()
+    {
+        if (front == 0 &amp;&amp; rear == SIZE - 1)
+        {
+            return true;
+        }
+        return false;
+    }
+    bool isEmpty()
+    {
+        if (front == -1)
+            return true;
+        else
+            return false;
+    }
+    void enQueue(char element)
+    {
+        if (isFull())
+        {
+            cout &lt;&lt; &quot;Queue is full&quot;;
+        }
+        else
+        {
+            if (front == -1)
+                front = 0;
+            rear++;
+            items[rear] = element;
+            cout &lt;&lt; endl
+                 &lt;&lt; &quot;Inserted &quot; &lt;&lt; element &lt;&lt; endl;
+        }
+    }
+    int deQueue()
+    {
+        char element;
+
+        if (isEmpty())
+        {
+            cout &lt;&lt; &quot;Queue is empty&quot; &lt;&lt; endl;
+            return (-1);
+        }
+        else
+        {
+            element = items[front];
+            if (front &gt;= rear)
+            {
+                front = -1;
+                rear = -1;
+            }
+            else
+            {
+                front++;
+            }
+            cout &lt;&lt; endl
+                 &lt;&lt; &quot;Deleted -&gt; &quot; &lt;&lt; element &lt;&lt; endl;
+            return (element);
+        }
+    }
+    void display()
+    {
+        int i;
+        if (isEmpty())
+        {
+            cout &lt;&lt; endl
+                 &lt;&lt; &quot;Empty Queue&quot; &lt;&lt; endl;
+        }
+        else
+        {
+            cout &lt;&lt; endl
+                 &lt;&lt; &quot;Front index-&gt; &quot; &lt;&lt; front;
+            cout &lt;&lt; endl
+                 &lt;&lt; &quot;Items -&gt; &quot;;
+            for (i = front; i &lt;= rear; i++)
+                cout &lt;&lt; items[i] &lt;&lt; &quot;  &quot;;
+            cout &lt;&lt; endl
+                 &lt;&lt; &quot;Rear index-&gt; &quot; &lt;&lt; rear &lt;&lt; endl;
+        }
+    }
+};
+int main()
+{
+    Queue q;
+    q.deQueue();
+
+    q.enQueue(&#39;a&#39;);
+    q.enQueue(&#39;b&#39;);
+    q.enQueue(&#39;c&#39;);
+    q.enQueue(&#39;d&#39;);
+    q.display();
+    q.deQueue();
+    q.deQueue();
+    q.deQueue();
+    q.deQueue();
+    q.display();
+    return 0;
+}
